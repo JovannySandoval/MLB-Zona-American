@@ -1,0 +1,261 @@
+
+/* ==========================================
+   MLB - ZONA AMERICANA
+   TRIVIA
+========================================== */
+
+/* CONTENEDOR PRINCIPAL */
+
+main {
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.trivia {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.trivia h2 {
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.trivia p {
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* PROGRESO */
+
+.progreso {
+    margin: 25px 0 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.barra {
+    width: 100%;
+    height: 15px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+#progresoBarra {
+    width: 0%;
+    height: 100%;
+    background: #222;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+/* PREGUNTA */
+
+#pregunta {
+    width: 100%;
+    margin-bottom: 25px;
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* RESPUESTAS */
+
+#opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+#opciones .opcion {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    padding: 15px;
+    font-size: 17px;
+    font-family: inherit;
+    line-height: 1.5;
+    text-align: center;
+    color: #222;
+    background: #eee;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    transition: background-color 0.2s;
+}
+
+#opciones .opcion:hover:not(:disabled) {
+    background: #ddd;
+}
+
+#opciones .opcion.correcta {
+    background: #b8e6c1;
+    border-color: #228b45;
+    color: #173d23;
+}
+
+#opciones .opcion.incorrecta {
+    background: #f4b5b5;
+    border-color: #b22222;
+    color: #641818;
+}
+
+/* MENSAJE */
+
+#mensaje {
+    min-height: 30px;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* BOTONES */
+
+#siguiente,
+#resultadoFinal button {
+    min-height: 46px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #222;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#siguiente:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+#siguiente:not(:disabled):hover,
+#resultadoFinal button:hover {
+    background: #444;
+}
+
+/* RESULTADO FINAL */
+
+#resultadoFinal {
+    margin-top: 30px;
+    padding: 25px;
+    background: #eee;
+    border-radius: 10px;
+}
+
+#resultadoFinal h2 {
+    font-size: 24px;
+}
+
+/* ACCESIBILIDAD */
+
+#opciones .opcion:focus-visible,
+#siguiente:focus-visible,
+#resultadoFinal button:focus-visible {
+    outline: 3px solid #777;
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 768px) {
+
+    main {
+        margin: 20px auto;
+        padding: 12px;
+    }
+
+    .trivia {
+        padding: 22px;
+    }
+
+    .trivia h2 {
+        font-size: 23px;
+    }
+
+    #pregunta {
+        font-size: 21px;
+    }
+}
+
+/* ==========================================
+   CELULAR
+========================================== */
+
+@media (max-width: 600px) {
+
+    main {
+        margin: 12px auto;
+        padding: 10px;
+    }
+
+    .trivia {
+        padding: 18px 14px;
+        border-radius: 10px;
+    }
+
+    .trivia h2 {
+        font-size: 20px;
+    }
+
+    .trivia p {
+        font-size: 14px;
+    }
+
+    .progreso {
+        font-size: 15px;
+    }
+
+    .barra {
+        height: 12px;
+        margin-bottom: 22px;
+    }
+
+    #pregunta {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    #opciones {
+        gap: 10px;
+    }
+
+    #opciones .opcion {
+        min-height: 48px;
+        padding: 13px 10px;
+        font-size: 15px;
+    }
+
+    #mensaje {
+        font-size: 15px;
+    }
+
+    #siguiente,
+    #resultadoFinal button {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    #resultadoFinal {
+        padding: 18px 12px;
+    }
+}

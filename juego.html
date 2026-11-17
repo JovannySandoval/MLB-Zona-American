@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Entretenimiento - MLB</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <header>
+
+        <img src="imgs/AmericanLeague.jpg" alt="Béisbol">
+
+        <h1>Loteria Adictiva</h1>
+
+        <p>¡Pon a prueba tu suerte!</p>
+
+        <nav>
+        <a href="index.html">Inicio</a>
+
+        <a href="historia.html">Historia</a>
+
+        <a href="equipos.html">Equipos</a>
+
+        <a href="ar.html">Realidad Aumentada</a>
+
+        <a href="estatistics.html">Estadisticas y Partidos</a>
+
+        <a href="galeria.html">Galería</a>
+
+        <a href="trivia.html">Trivia</a>
+        </nav>
+
+    </header>
+
+
+    <section class="juego">
+
+        <h2>🎰 Ruleta de la Zona Americana</h2>
+
+        <p>
+            Elige un número del 1 al 12 y prueba tu suerte.
+        </p>
+
+        <p>
+            Cada número representa a un equipo de la Liga Americana.
+        </p>
+
+
+        <!-- RULETA -->
+
+        <div class="ruleta-contenedor">
+
+            <div id="ruleta">
+
+                <div class="numero-ruleta n1">1</div>
+                <div class="numero-ruleta n2">2</div>
+                <div class="numero-ruleta n3">3</div>
+                <div class="numero-ruleta n4">4</div>
+                <div class="numero-ruleta n5">5</div>
+                <div class="numero-ruleta n6">6</div>
+                <div class="numero-ruleta n7">7</div>
+                <div class="numero-ruleta n8">8</div>
+                <div class="numero-ruleta n9">9</div>
+                <div class="numero-ruleta n10">10</div>
+                <div class="numero-ruleta n11">11</div>
+                <div class="numero-ruleta n12">12</div>
+
+                <div class="centro-ruleta">
+                    MLB
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SELECCIÓN -->
+
+        <label for="numero">
+            Elige tu número:
+        </label>
+
+        <select id="numero">
+
+            <option value="">
+                Selecciona un número
+            </option>
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+
+        </select>
+
+
+        <br><br>
+
+
+        <button id="botonGirar" onclick="girarRuleta()">
+            🎰 Girar Ruleta
+        </button>
+
+
+        <!-- COOLDOWN -->
+
+        <div id="cooldown"></div>
+
+
+        <!-- RESULTADO -->
+
+        <div id="resultado"></div>
+
+
+        <!-- ESTADÍSTICAS -->
+
+        <div class="estadisticas-juego">
+
+            <div>
+                <strong>Intentos</strong>
+                <span id="intentos">0</span>
+            </div>
+
+            <div>
+                <strong>Cromos ganados</strong>
+                <span id="premios">0</span>
+            </div>
+
+        </div>
+
+
+        <!-- COLECCIÓN -->
+
+        <div class="coleccion">
+
+            <h2>📖 Mi colección de cromos</h2>
+
+            <p>
+                Estos son los equipos que has conseguido.
+            </p>
+
+            <div id="coleccionCromos">
+
+                <!-- Los cromos aparecen aquí mediante JavaScript -->
+
+            </div>
+
+        </div>
+
+
+        <!-- HISTORIAL -->
+
+        <div class="historial">
+
+            <h2>📜 Historial de tiros</h2>
+
+            <ul id="historialTiros">
+
+                <li>
+                    Todavía no has realizado ningún tiro.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            MLB - Zona Americana
+        </p>
+
+    </footer>
+
+
+    <script src="juego.js"></script>
+
+</body>
+
+</html>

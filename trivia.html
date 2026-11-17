@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Trivia - MLB Zona Americana</title>
+
+    <!-- ESTILOS GENERALES DEL SITIO -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- ESTILOS ESPECÍFICOS DE TRIVIA -->
+    <link rel="stylesheet" href="trivia.css">
+
+</head>
+
+<body>
+
+    <!-- ======================================
+         ENCABEZADO
+    ======================================= -->
+
+    <header>
+
+        <img
+            src="imgs/AmericanLeague.jpg"
+            alt="Liga Americana de Béisbol">
+
+        <h1>Trivia de la Zona Americana</h1>
+
+        <p>¡Demuestra cuánto sabes de béisbol!</p>
+
+        <!-- MENÚ DE NAVEGACIÓN -->
+
+        <nav>
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="historia.html">
+                Historia
+            </a>
+
+            <a href="equipos.html">
+                Equipos
+            </a>
+
+            <a href="ar.html">
+                Realidad Aumentada
+            </a>
+
+            <a href="estatistics.html">
+                Estadísticas y Partidos
+            </a>
+
+            <a href="galeria.html">
+                Galería
+            </a>
+
+            <a href="juego.html">
+                Lotería
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- ======================================
+         CONTENIDO PRINCIPAL
+    ======================================= -->
+
+    <main>
+
+        <section class="trivia">
+
+            <h2>⚾ Trivia de la Liga Americana</h2>
+
+            <p>
+                Responde correctamente para avanzar
+                a la siguiente pregunta.
+            </p>
+
+            <p>
+                Si te equivocas, puedes intentarlo
+                nuevamente.
+            </p>
+
+            <!-- ==================================
+                 PROGRESO DE PREGUNTAS
+            =================================== -->
+
+            <div class="progreso">
+
+                Pregunta
+
+                <span id="numeroPregunta">
+                    1
+                </span>
+
+                de
+
+                <span id="totalPreguntas">
+                    75
+                </span>
+
+            </div>
+
+            <!-- BARRA DE PROGRESO -->
+
+            <div
+                class="barra"
+                role="progressbar"
+                aria-label="Progreso de la trivia"
+                aria-valuemin="0"
+                aria-valuemax="75">
+
+                <div id="progresoBarra"></div>
+
+            </div>
+
+            <!-- ==================================
+                 PREGUNTA ACTUAL
+            =================================== -->
+
+            <div id="pregunta">
+
+                Aquí aparecerá la pregunta.
+
+            </div>
+
+            <!-- ==================================
+                 OPCIONES DE RESPUESTA
+            =================================== -->
+
+            <div id="opciones">
+
+                <!--
+                    Las opciones se generan
+                    automáticamente mediante
+                    trivia.js
+                -->
+
+            </div>
+
+            <!-- ==================================
+                 MENSAJE DE RESPUESTA
+            =================================== -->
+
+            <div
+                id="mensaje"
+                aria-live="polite">
+            </div>
+
+            <!-- ==================================
+                 BOTÓN SIGUIENTE PREGUNTA
+            =================================== -->
+
+            <button
+                type="button"
+                id="siguiente"
+                onclick="siguientePregunta()"
+                disabled>
+
+                Siguiente pregunta
+
+            </button>
+
+            <!-- ==================================
+                 RESULTADO FINAL
+            =================================== -->
+
+            <div
+                id="resultadoFinal"
+                style="display: none;">
+
+                <h2>🏆 ¡Trivia completada!</h2>
+
+                <p>
+                    Has respondido correctamente
+                    las 75 preguntas.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="reiniciarTrivia()">
+
+                    Volver a jugar
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ======================================
+         PIE DE PÁGINA
+    ======================================= -->
+
+    <footer>
+
+        <p>MLB - Zona Americana</p>
+
+    </footer>
+
+    <!-- ======================================
+         JAVASCRIPT
+    ======================================= -->
+
+    <script src="trivia.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Galería - MLB Zona Americana</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+        <img src="imgs/AmericanLeague.jpg"
+             alt="Béisbol">
+
+        <h1>Galería de Fotos y Videos</h1>
+
+        <p>Momentos y jugadores de la Zona Americana</p>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="historia.html">Historia</a>
+            <a href="equipos.html">Equipos</a>
+            <a href="ar.html">Realidad Aumentada</a>
+            <a href="estatistics.html">
+                Estadísticas y Partidos
+            </a>
+            <a href="juego.html">Lotería</a>
+            <a href="trivia.html">Trivia</a>
+        </nav>
+    </header>
+
+    <!-- GALERÍA PRINCIPAL -->
+
+    <main class="galeria">
+
+        <section class="galeria-intro">
+
+            <h2>Galería de la Liga Americana</h2>
+
+            <p>
+                Explora imágenes y videos de béisbol.
+                Selecciona cualquiera para abrir su editor
+                y probar diferentes filtros.
+            </p>
+
+        </section>
+
+        <!-- FOTOGRAFÍAS Y VIDEOS -->
+
+        <section id="galeria-fotos">
+
+            <!-- IMAGEN 1 -->
+
+            <div class="elemento-galeria">
+
+                <img
+                    src="imgsfiltro/img1.jpg"
+                    alt="Foto de béisbol"
+                    onclick="abrirEditor(this)"
+                    loading="lazy">
+
+            </div>
+
+            <!-- IMAGEN 2 -->
+
+            <div class="elemento-galeria">
+
+                <img
+                    src="imgsfiltro/img2.jpg"
+                    alt="Jugador de béisbol"
+                    onclick="abrirEditor(this)"
+                    loading="lazy">
+
+            </div>
+
+            <!-- IMAGEN 3 -->
+
+            <div class="elemento-galeria">
+
+                <img
+                    src="imgsfiltro/img3.jpg"
+                    alt="Partido de béisbol"
+                    onclick="abrirEditor(this)"
+                    loading="lazy">
+
+            </div>
+
+            <!-- IMAGEN 4 -->
+
+            <div class="elemento-galeria">
+
+                <img
+                    src="imgsfiltro/img4.jpg"
+                    alt="Jugador de béisbol"
+                    onclick="abrirEditor(this)"
+                    loading="lazy">
+
+            </div>
+
+            <!-- VIDEO 1 -->
+
+            <div class="elemento-galeria">
+
+                <video
+                    controls
+                    preload="metadata"
+                    playsinline
+                    onclick="abrirEditorVideo(this)">
+
+                    <source
+                        src="imgsfiltro/altasaturacion.mp4"
+                        type="video/mp4">
+
+                    Tu navegador no soporta video.
+
+                </video>
+
+            </div>
+
+            <!-- VIDEO 2 -->
+
+            <div class="elemento-galeria">
+
+                <video
+                    controls
+                    preload="metadata"
+                    playsinline
+                    onclick="abrirEditorVideo(this)">
+
+                    <source
+                        src="imgsfiltro/Desenfoque.mp4"
+                        type="video/mp4">
+
+                    Tu navegador no soporta video.
+
+                </video>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ======================================
+         EDITOR DE IMÁGENES
+    ======================================= -->
+
+    <div id="editor"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Editor de imagen">
+
+        <div class="editor-contenido">
+
+            <!-- BOTÓN CERRAR IMAGEN -->
+
+            <button
+                type="button"
+                class="cerrar-editor"
+                onclick="cerrarEditor()"
+                aria-label="Cerrar editor de imagen">
+                ✕
+            </button>
+
+            <h2>Editor de imagen</h2>
+
+            <!-- CANVAS DE IMAGEN -->
+
+            <div class="canvas-contenedor">
+
+                <canvas id="canvasEditor"></canvas>
+
+            </div>
+
+            <!-- FILTROS DE IMAGEN -->
+
+            <div class="filtros">
+
+                <h3>Filtros</h3>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltro('normal')">
+                    Normal
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltro('desenfoque')">
+                    Desenfoque
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltro('pixelado')">
+                    Pixelado
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltro('termica')">
+                    Cámara térmica
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltro('saturado')">
+                    Alta saturación
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltro('pastel')">
+                    Colores pastel
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltro('suave')">
+                    Suavizado
+                </button>
+
+            </div>
+
+            <!-- ACCIONES DE IMAGEN -->
+
+            <div class="controles-editor">
+
+                <button
+                    type="button"
+                    onclick="restaurarImagen()">
+                    Restaurar
+                </button>
+
+                <button
+                    type="button"
+                    onclick="guardarImagen()">
+                    Guardar imagen
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ======================================
+         EDITOR DE VIDEOS
+    ======================================= -->
+
+    <section
+        class="editor-video"
+        id="editorVideo"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Editor de video">
+
+        <div class="editor-video-contenido">
+
+            <!-- BOTÓN CERRAR VIDEO -->
+
+            <button
+                type="button"
+                class="cerrar-editor"
+                onclick="cerrarEditorVideo()"
+                aria-label="Cerrar editor de video">
+                ✕
+            </button>
+
+            <h2>Editor de video</h2>
+
+            <p class="descripcion-editor">
+                Prueba los filtros y guarda una versión
+                del video editado.
+            </p>
+
+            <!-- VISTAS DEL VIDEO -->
+
+            <div class="videos-editor">
+
+                <!-- VIDEO ORIGINAL -->
+
+                <div class="vista-video">
+
+                    <h3>Video original</h3>
+
+                    <video
+                        id="videoOriginal"
+                        controls
+                        playsinline
+                        preload="metadata">
+                    </video>
+
+                </div>
+
+                <!-- VISTA CON FILTRO -->
+
+                <div class="vista-video">
+
+                    <h3>Vista previa con filtro</h3>
+
+                    <canvas id="canvasVideo"></canvas>
+
+                </div>
+
+            </div>
+
+            <!-- FILTROS DE VIDEO -->
+
+            <div class="controles-video">
+
+                <h3>Filtros</h3>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltroVideo('normal')">
+                    Normal
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltroVideo('desenfoque')">
+                    Desenfoque
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltroVideo('pixelado')">
+                    Pixelado
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltroVideo('termica')">
+                    Cámara térmica
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltroVideo('saturado')">
+                    Alta saturación
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltroVideo('pastel')">
+                    Colores pastel
+                </button>
+
+                <button
+                    type="button"
+                    onclick="aplicarFiltroVideo('suave')">
+                    Suavizado
+                </button>
+
+            </div>
+
+            <!-- GRABACIÓN Y DESCARGA -->
+
+            <div class="acciones-video">
+
+                <button
+                    type="button"
+                    onclick="comenzarGrabacion()">
+                    Iniciar grabación
+                </button>
+
+                <button
+                    type="button"
+                    onclick="detenerGrabacion()">
+                    Guardar video filtrado
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+        <p>MLB - Zona Americana</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="galeria.js"></script>
+
+</body>
+
+</html>

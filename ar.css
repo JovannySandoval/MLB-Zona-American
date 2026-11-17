@@ -1,0 +1,404 @@
+
+/* ==========================================
+   REALIDAD AUMENTADA - MLB ZONA AMERICANA
+   DISEÑO RESPONSIVO
+========================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    font-family: Arial, sans-serif;
+    background: #edf2f8;
+    color: #222;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+========================================== */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==========================================
+   CÁMARA DE REALIDAD AUMENTADA
+========================================== */
+
+#ar-container {
+    position: relative;
+    width: min(100%, 900px);
+    height: 520px;
+    min-height: 0;
+    background: #111;
+    overflow: hidden;
+    isolation: isolate;
+    margin-top: 155px;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Cámara y modelos 3D */
+
+#ar-container video,
+#ar-container canvas {
+    max-width: none;
+}
+
+#ar-container video {
+    z-index: 0 !important;
+}
+
+#ar-container canvas {
+    z-index: 1 !important;
+}
+
+/* ==========================================
+   ENCABEZADO Y BOTONES DE CÁMARA
+========================================== */
+
+.interfaz-ar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 900px);
+    min-height: 155px;
+    padding: 20px 15px 15px;
+    background: #142b4b;
+    color: white;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 12px 12px 0 0;
+}
+
+.interfaz-ar h1 {
+    font-size: 25px;
+    margin: 0 0 10px;
+    color: white;
+}
+
+#estadoAR,
+#resultadoAR {
+    margin: 8px auto;
+    font-size: 14px;
+    color: #fff;
+}
+
+#resultadoAR.detectado {
+    color: #a7ffb0;
+    font-weight: bold;
+}
+
+/* Botones para iniciar y detener */
+
+.botones-ar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px auto;
+}
+
+.botones-ar button {
+    flex: 1;
+    max-width: 220px;
+}
+
+/* ==========================================
+   ESTILO GENERAL DE BOTONES
+========================================== */
+
+button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 7px;
+    background: #285c9b;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #3676bf;
+}
+
+button:active {
+    background: #173e70;
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.interfaz-ar button {
+    pointer-events: auto;
+}
+
+/* ==========================================
+   INFORMACIÓN DEL EQUIPO
+========================================== */
+
+.modelo-web {
+    position: relative;
+    display: block;
+    width: min(100%, 900px);
+    padding: 25px;
+    background: white;
+    color: #222;
+    z-index: 2;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+}
+
+.modelo-web h2 {
+    font-size: 23px;
+    margin: 0 0 15px;
+    color: #142b4b;
+}
+
+#informacion-equipo {
+    width: 100%;
+    padding: 20px;
+    background: #f2f4f7;
+    border-radius: 10px;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
+
+#informacion-equipo h3 {
+    margin-top: 0;
+    color: #142b4b;
+}
+
+#informacion-equipo p {
+    line-height: 1.6;
+}
+
+/* Enlace a historia del equipo */
+
+.boton-historia {
+    display: inline-block;
+    max-width: 100%;
+    padding: 12px 16px;
+    margin-top: 10px;
+    border-radius: 7px;
+    background: #285c9b;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.boton-historia:hover {
+    background: #3676bf;
+}
+
+/* ==========================================
+   CONTROLES DEL MODELO
+========================================== */
+
+.controles-modelo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.controles-modelo button {
+    width: 100%;
+    min-width: 0;
+    min-height: 45px;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+========================================== */
+
+footer {
+    width: 100%;
+    padding: 25px 15px;
+    margin-top: 30px;
+    background: #111;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+footer nav a {
+    display: block;
+    padding: 10px 15px;
+    background: #333;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+footer nav a:hover {
+    background: #555;
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 850px) {
+
+    #ar-container {
+        width: 94%;
+        height: 450px;
+    }
+
+    .interfaz-ar {
+        width: 94%;
+    }
+
+    .modelo-web {
+        width: 94%;
+        padding: 20px;
+    }
+}
+
+/* ==========================================
+   CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 12px 0 0;
+    }
+
+    .interfaz-ar {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        order: 1;
+        width: 94%;
+        min-height: 0;
+        padding: 18px 12px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .interfaz-ar h1 {
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    #estadoAR,
+    #resultadoAR {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .botones-ar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+    .botones-ar button {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        padding: 11px 6px;
+        font-size: 12px;
+    }
+
+    #ar-container {
+        order: 2;
+        width: 94%;
+        height: 280px;
+        min-height: 0;
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .modelo-web {
+        order: 3;
+        width: 94%;
+        padding: 15px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .modelo-web h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    #informacion-equipo {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    #informacion-equipo h3 {
+        font-size: 16px;
+    }
+
+    .controles-modelo {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+        margin-top: 15px;
+    }
+
+    .controles-modelo button {
+        padding: 11px 6px;
+        min-height: 44px;
+        font-size: 12px;
+    }
+
+    footer {
+        order: 4;
+        margin-top: 25px;
+        padding: 20px 12px;
+    }
+
+    footer nav {
+        gap: 8px;
+    }
+
+    footer nav a {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   CELULARES MUY PEQUEÑOS
+========================================== */
+
+@media (max-width: 360px) {
+
+    .interfaz-ar h1 {
+        font-size: 19px;
+    }
+
+    #ar-container {
+        height: 240px;
+    }
+
+    .controles-modelo button {
+        font-size: 11px;
+    }
+}

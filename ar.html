@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Realidad Aumentada - MLB</title>
+
+    <link rel="stylesheet" href="ar.css">
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+            "mindar-image-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"
+        }
+    }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- CONTENEDOR DE REALIDAD AUMENTADA -->
+
+    <div id="ar-container"></div>
+
+    <!-- INTERFAZ DE REALIDAD AUMENTADA -->
+
+    <div class="interfaz-ar">
+
+        <h1>Realidad Aumentada</h1>
+
+        <div id="estadoAR">
+            Cámara detenida
+        </div>
+
+        <div class="botones-ar">
+
+            <button id="iniciarAR">
+                Iniciar cámara
+            </button>
+
+            <button id="detenerAR">
+                Detener cámara
+            </button>
+
+        </div>
+
+        <div id="resultadoAR">
+            Esperando reconocimiento...
+        </div>
+
+    </div>
+
+    <!-- CONTROLES DEL MODELO 3D -->
+
+    <section class="modelo-web">
+
+        <div class="controles-modelo">
+
+            <button id="pausarModelo">
+                Pausar animación
+            </button>
+
+            <button id="reanudarModelo">
+                Reanudar animación
+            </button>
+
+            <button id="botonConfetti">
+                🎉 Lanzar confeti
+            </button>
+
+            <button id="tomarFoto">
+                📸 Tomar foto
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <nav>
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="historia.html">
+                Historia
+            </a>
+
+            <a href="equipos.html">
+                Equipos
+            </a>
+
+            <a href="estatistics.html">
+                Estadísticas y Partidos
+            </a>
+
+            <a href="galeria.html">
+                Galería
+            </a>
+
+            <a href="juego.html">
+                Lotería
+            </a>
+
+            <a href="trivia.html">
+                Trivia
+            </a>
+
+        </nav>
+
+    </footer>
+
+    <!-- LIBRERÍA DE CONFETI -->
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <!-- JAVASCRIPT DE REALIDAD AUMENTADA -->
+
+    <script type="module" src="ar.js"></script>
+
+</body>
+
+</html>
