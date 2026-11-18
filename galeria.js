@@ -388,32 +388,38 @@ function comenzarGrabacion() {
         typeof MediaRecorder === "undefined" ||
         typeof canvas.captureStream !== "function"
     ) {
-        alert("Este navegador no admite la grabación del video filtrado.");
+        alert("Este navegador no permite grabar el video con filtros.");
         return;
     }
 
-    const formatos = [
-        "video/webm;codecs=vp9",
-        "video/webm;codecs=vp8",
-        "video/webm"
+    // Se intenta MP4 real. No se cambia solamente la extensión.
+    const formatosMP4 = [
+        "video/mp4;codecs=avc1.42E01E",
+        "video/mp4;codecs=avc1.4D401E",
+        "video/mp4"
     ];
 
-    const formato = formatos.find(tipo =>
+    const formato = formatosMP4.find(tipo =>
         MediaRecorder.isTypeSupported(tipo)
     );
 
     if (!formato) {
-        alert("Este navegador no admite exportar video WebM.");
+        alert(
+            "Este navegador no permite exportar MP4 directamente. " +
+            "No se descargará un WebM con extensión MP4. " +
+            "Prueba con Safari actualizado o convierte el video " +
+            "en un equipo compatible."
+        );
         return;
     }
 
     try {
+        // Dibujar el primer fotograma antes de capturar el canvas.
+        dibujarFotograma();
         streamGrabacion = canvas.captureStream(30);
-
         grabador = new MediaRecorder(streamGrabacion, {
             mimeType: formato
         });
-
         partesVideo = [];
 
         grabador.ondataavailable = function(evento) {
@@ -423,27 +429,25 @@ function comenzarGrabacion() {
         };
 
         grabador.onstop = function() {
-            const blob = new Blob(partesVideo, {
-                type: grabador.mimeType
-            });
+            const tipoReal = grabador.mimeType || formato;
+            const blob = new Blob(partesVideo, { type: tipoReal });
 
-            if (blob.size > 0) {
-                descargarArchivo(blob, "video-filtrado.webm");
+            if (blob.size > 0 && tipoReal.toLowerCase().includes("mp4")) {
+                descargarArchivo(blob, "video-filtrado.mp4");
             } else {
-                alert("No se generó contenido de video.");
+                alert("No se pudo generar un video MP4 válido.");
             }
 
             if (streamGrabacion) {
-                streamGrabacion.getTracks().forEach(
-                    pista => pista.stop()
-                );
+                streamGrabacion.getTracks().forEach(pista => pista.stop());
                 streamGrabacion = null;
             }
-
             grabador = null;
+            grabando = false;
         };
 
-        grabador.onerror = function() {
+        grabador.onerror = function(evento) {
+            console.error("Error de grabación:", evento);
             grabando = false;
             alert("Ocurrió un error durante la grabación.");
         };
@@ -451,27 +455,22 @@ function comenzarGrabacion() {
         grabador.start();
         grabando = true;
 
-        // La grabación comienza con el video reproduciéndose.
-        if (video.ended) {
-            video.currentTime = 0;
-        }
+        if (video.ended) video.currentTime = 0;
 
-        video.play().catch(function() {
+        video.play().catch(function(error) {
+            console.error("Error al reproducir video:", error);
             detenerGrabacion();
             alert("No se pudo reproducir el video.");
         });
 
     } catch (error) {
         grabando = false;
-
         if (streamGrabacion) {
-            streamGrabacion.getTracks().forEach(
-                pista => pista.stop()
-            );
+            streamGrabacion.getTracks().forEach(pista => pista.stop());
             streamGrabacion = null;
         }
-
-        alert("No fue posible iniciar la grabación.");
+        grabador = null;
+        alert("No fue posible iniciar la grabación MP4.");
         console.error(error);
     }
 }
